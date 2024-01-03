@@ -1,0 +1,20 @@
+[[databaselist]]
+driver = 'sqlite'
+source = 'data/test.db'
+maxidleconn = 3
+maxopenconn = 5
+connmaxlifetime = '10m'
+
+[[databaselist]]
+driver = 'mysql'
+source = 'localhost:3306'
+maxidleconn = 3
+maxopenconn = 5
+connmaxlifetime = '10m'
+
+[[redislist]]
+addr = '127.0.0.1:6379'
+db = 1
+dialtimeout = 3
+readtimeout = 1
+writetimeout = 1
