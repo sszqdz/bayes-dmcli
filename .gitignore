@@ -1,0 +1,7 @@
+bin/
+log/
+
+go.work
+go.work.sum
+
+.build
