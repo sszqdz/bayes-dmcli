@@ -1,7 +1,7 @@
 package environment
 
 import (
-	"bayes/dmcli/internal/pkg/dirr"
+	"bayes-dmcli/internal/pkg/dirr"
 	"os"
 	"path/filepath"
 	"sync"

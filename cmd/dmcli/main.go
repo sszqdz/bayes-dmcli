@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bayes/dmcli/internal/dmcli/cmd"
-	"bayes/dmcli/internal/dmcli/config"
-	"bayes/dmcli/internal/pkg/environment"
+	"bayes-dmcli/internal/dmcli/cmd"
+	"bayes-dmcli/internal/dmcli/config"
+	"bayes-dmcli/internal/pkg/environment"
 	"fmt"
 	"os"
 	"path/filepath"

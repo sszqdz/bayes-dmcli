@@ -1,7 +1,7 @@
 package sqlitecmd
 
 import (
-	"bayes/dmcli/internal/dmcli/config"
+	"bayes-dmcli/internal/dmcli/config"
 
 	"github.com/spf13/cobra"
 )
