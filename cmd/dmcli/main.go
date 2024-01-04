@@ -3,13 +3,14 @@ package main
 import (
 	"bayes-dmcli/internal/dmcli/cmd"
 	"bayes-dmcli/internal/dmcli/config"
-	"bayes-dmcli/internal/pkg/environment"
+
 	"fmt"
 	"os"
 	"path/filepath"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/sszqdz/bayes-toolkit/environment"
 )
 
 const cmdName = "dmcli"
