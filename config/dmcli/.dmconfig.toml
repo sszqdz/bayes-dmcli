@@ -1,11 +1,15 @@
 [[databaselist]]
+name = "test"
+desc = "This is a sqlite test db"
 driver = 'sqlite'
-source = 'data/test.db'
+source = 'file:./data/test.db?_pragma=busy_timeout(3000)&_pragma=journal_mode(WAL)'
 maxidleconn = 3
 maxopenconn = 5
 connmaxlifetime = '10m'
 
 [[databaselist]]
+name = "test"
+desc = "This is a mysql test db"
 driver = 'mysql'
 source = 'localhost:3306'
 maxidleconn = 3
@@ -13,6 +17,8 @@ maxopenconn = 5
 connmaxlifetime = '10m'
 
 [[redislist]]
+name = "test"
+desc = "This is a redis test db"
 addr = '127.0.0.1:6379'
 db = 1
 dialtimeout = 3

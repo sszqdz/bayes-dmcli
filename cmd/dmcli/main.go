@@ -43,5 +43,6 @@ func main() {
 			fmt.Printf("rds: %s\n", rds.Addr)
 		}
 	}
+
 	cobra.CheckErr(cmd.Execute(conf))
 }

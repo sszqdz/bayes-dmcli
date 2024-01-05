@@ -6,3 +6,4 @@ go.work.sum
 
 .build
 .env
+data/
