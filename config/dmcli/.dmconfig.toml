@@ -2,10 +2,10 @@
 name = "test"
 desc = "This is a sqlite test db"
 driver = 'sqlite'
-source = 'file:./data/test.db?_pragma=busy_timeout(3000)&_pragma=journal_mode(WAL)'
-maxidleconn = 3
-maxopenconn = 5
-connmaxlifetime = '10m'
+source = 'file:./data/test.db?_pragma=busy_timeout(5000)&_pragma=journal_mode(WAL)'
+maxidleconn = 1
+maxopenconn = 3
+connmaxlifetime = '1h'
 
 [[databaselist]]
 name = "test"
@@ -14,7 +14,7 @@ driver = 'mysql'
 source = 'localhost:3306'
 maxidleconn = 3
 maxopenconn = 5
-connmaxlifetime = '10m'
+connmaxlifetime = '1h'
 
 [[redislist]]
 name = "test"

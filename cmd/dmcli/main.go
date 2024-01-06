@@ -4,7 +4,6 @@ import (
 	"bayes-dmcli/internal/dmcli/cmd"
 	"bayes-dmcli/internal/dmcli/config"
 
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -20,13 +19,13 @@ func loadConfig() *config.Config {
 	vtoml := viper.New()
 	vtoml.SetConfigName(".dmconfig")
 	vtoml.SetConfigType("toml")
+	homeDir, err := os.UserHomeDir()
+	cobra.CheckErr(err)
+	confPath := filepath.Join(homeDir)
 	if environment.LoadEnv().Is(environment.EnvDebug) {
-		homeDir, err := os.UserHomeDir()
-		cobra.CheckErr(err)
-		vtoml.AddConfigPath(filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config", cmdName))
-	} else {
-		vtoml.AddConfigPath(filepath.Join("/app", cmdName, "config"))
+		confPath = filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config", cmdName)
 	}
+	vtoml.AddConfigPath(confPath)
 	cobra.CheckErr(vtoml.ReadInConfig())
 	cobra.CheckErr(vtoml.Unmarshal(&conf))
 
@@ -34,15 +33,5 @@ func loadConfig() *config.Config {
 }
 
 func main() {
-	conf := loadConfig()
-	if conf != nil {
-		for _, db := range conf.DatabaseList {
-			fmt.Printf("driver: %s\n", db.Driver)
-		}
-		for _, rds := range conf.RedisList {
-			fmt.Printf("rds: %s\n", rds.Addr)
-		}
-	}
-
-	cobra.CheckErr(cmd.Execute(conf))
+	cobra.CheckErr(cmd.Execute(loadConfig()))
 }

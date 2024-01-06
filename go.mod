@@ -51,4 +51,4 @@ require (
 	modernc.org/sqlite v1.28.0 // indirect
 )
 
-replace github.com/c-bata/go-prompt => github.com/sszqdz/go-prompt v0.2.602
+replace github.com/c-bata/go-prompt => github.com/sszqdz/go-prompt v0.2.610

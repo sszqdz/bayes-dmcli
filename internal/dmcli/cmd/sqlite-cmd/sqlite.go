@@ -5,10 +5,11 @@ import (
 	"bayes-dmcli/internal/pkg/uuitable"
 	"database/sql"
 	"errors"
+	"os"
+	"strings"
+	"syscall"
 
 	"github.com/c-bata/go-prompt"
-
-	"github.com/gosuri/uitable"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
@@ -50,9 +51,7 @@ func sqliteCmdRun(cmd *cobra.Command, args []string) {
 }
 
 func selectDB(cmd *cobra.Command) (*config.Database, error) {
-	tb := uitable.New()
-	tb.MaxColWidth = 20
-	tb.Wrap = true
+	tb := newTable(50, true)
 
 	uuitable.AddHeader(tb, "#", "Name", "Desc", "Driver", "Source", "MaxIdleConn", "MaxOpenConn", "ConnMaxLifetime")
 	i := 1
@@ -65,7 +64,23 @@ func selectDB(cmd *cobra.Command) (*config.Database, error) {
 	}
 	cmd.Println(tb)
 	// waiting input
-	indexStr := prompt.Input("> ", func(prompt.Document) []prompt.Suggest { return nil })
+	cmd.Println()
+	indexStr := prompt.Input(
+		"Enter serial number: ",
+		func(prompt.Document) []prompt.Suggest { return nil },
+		prompt.OptionAddKeyBind(prompt.KeyBind{
+			Key: prompt.ControlC,
+			Fn: func(buf *prompt.Buffer) {
+				if err := syscall.Kill(os.Getpid(), syscall.SIGINT); err != nil {
+					os.Exit(1)
+				}
+			},
+		}),
+	)
+	before, _ := strings.CutSuffix(strings.TrimSpace(indexStr), ";")
+	if before == "exit" {
+		return nil, errors.New("exit")
+	}
 	index, err := cast.ToIntE(indexStr)
 	if err != nil {
 		return nil, errors.New("invalid input")
@@ -77,13 +92,12 @@ func selectDB(cmd *cobra.Command) (*config.Database, error) {
 			continue
 		}
 		if i == index {
-			cmd.Println("You select ", i)
 			return dbConf, nil
 		}
 		i++
 	}
 
-	return nil, errors.New("not exists")
+	return nil, errors.New("not exist")
 }
 
 func openDB(cmd *cobra.Command, dbConf *config.Database) (*sql.DB, error) {
