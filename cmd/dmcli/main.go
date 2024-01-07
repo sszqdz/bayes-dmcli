@@ -21,11 +21,15 @@ func loadConfig() *config.Config {
 	vtoml.SetConfigType("toml")
 	homeDir, err := os.UserHomeDir()
 	cobra.CheckErr(err)
-	confPath := filepath.Join(homeDir)
 	if environment.LoadEnv().Is(environment.EnvDebug) {
-		confPath = filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config", cmdName)
+		vtoml.AddConfigPath(filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config", cmdName))
+	} else {
+		workPath, err := os.Getwd()
+		cobra.CheckErr(err)
+		vtoml.AddConfigPath(filepath.Join(workPath))
+		vtoml.AddConfigPath(filepath.Join(homeDir))
 	}
-	vtoml.AddConfigPath(confPath)
+
 	cobra.CheckErr(vtoml.ReadInConfig())
 	cobra.CheckErr(vtoml.Unmarshal(&conf))
 

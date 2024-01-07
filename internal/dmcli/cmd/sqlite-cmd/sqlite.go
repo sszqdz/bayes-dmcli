@@ -51,7 +51,7 @@ func sqliteCmdRun(cmd *cobra.Command, args []string) {
 }
 
 func selectDB(cmd *cobra.Command) (*config.Database, error) {
-	tb := newTable(50, true)
+	tb := newTable(30, true)
 
 	uuitable.AddHeader(tb, "#", "Name", "Desc", "Driver", "Source", "MaxIdleConn", "MaxOpenConn", "ConnMaxLifetime")
 	i := 1

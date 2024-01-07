@@ -1,9 +1,11 @@
 bin/
 log/
+data/
 
 go.work
 go.work.sum
 
 .build
 .env
-data/
+.license-report
+licenses.tpl
