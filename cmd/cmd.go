@@ -2,21 +2,19 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package main
+package cmd
 
 import (
 	"os"
 	"path/filepath"
 
-	"github.com/sszqdz/bayes-dmcli/internal/dmcli/cmd"
-	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
+	"github.com/sszqdz/bayes-dmcli/internal/config"
+	"github.com/sszqdz/bayes-dmcli/internal/root"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/sszqdz/bayes-toolkit/environment"
 )
-
-const cmdName = "dmcli"
 
 func loadConfig() *config.Config {
 	var conf config.Config
@@ -26,7 +24,7 @@ func loadConfig() *config.Config {
 	homeDir, err := os.UserHomeDir()
 	cobra.CheckErr(err)
 	if environment.LoadEnv().Is(environment.EnvDebug) {
-		vtoml.AddConfigPath(filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config", cmdName))
+		vtoml.AddConfigPath(filepath.Join(homeDir, "Documents", "projects", "bayes-dmcli", "config"))
 	} else {
 		workPath, err := os.Getwd()
 		cobra.CheckErr(err)
@@ -40,6 +38,6 @@ func loadConfig() *config.Config {
 	return &conf
 }
 
-func main() {
-	cobra.CheckErr(cmd.Execute(loadConfig()))
+func Run() {
+	cobra.CheckErr(root.Execute(loadConfig()))
 }

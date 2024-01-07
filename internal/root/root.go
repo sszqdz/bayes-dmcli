@@ -2,17 +2,17 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package cmd
+package root
 
 import (
-	sqlitecmd "github.com/sszqdz/bayes-dmcli/internal/dmcli/cmd/sqlite-cmd"
-	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
+	"github.com/sszqdz/bayes-dmcli/internal/config"
+	sqlitecmd "github.com/sszqdz/bayes-dmcli/internal/root/sqlite-cmd"
 
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "dmcli",
+	Use:   "bayes-dmcli",
 	Short: "Database Command Tool",
 	Long:  `A database command line tool, supports sqlite, redis and more!`,
 	CompletionOptions: cobra.CompletionOptions{

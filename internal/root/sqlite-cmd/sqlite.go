@@ -11,7 +11,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
+	"github.com/sszqdz/bayes-dmcli/internal/config"
 	"github.com/sszqdz/bayes-dmcli/internal/pkg/uuitable"
 
 	"github.com/c-bata/go-prompt"
