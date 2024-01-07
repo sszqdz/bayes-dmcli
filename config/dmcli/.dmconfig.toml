@@ -2,7 +2,7 @@
 name = "test"
 desc = "This is a sqlite test db"
 driver = 'sqlite'
-source = 'file:./data/test.db?_pragma=busy_timeout(5000)&_pragma=journal_mode(WAL)'
+source = 'file:./data/test.db?_pragma=busy_timeout(5000)&_pragma=journal_mode(WAL)&_pragma=synchronous(NORMAL)'
 maxidleconn = 1
 maxopenconn = 3
 connmaxlifetime = '1h'
