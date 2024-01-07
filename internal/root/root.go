@@ -12,7 +12,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "bayes-dmcli",
+	Use:   "dmcli",
 	Short: "Database Command Tool",
 	Long:  `A database command line tool, supports sqlite, redis and more!`,
 	CompletionOptions: cobra.CompletionOptions{
