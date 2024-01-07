@@ -1,4 +1,4 @@
-module bayes-dmcli
+module github.com/sszqdz/bayes-dmcli
 
 go 1.21.5
 

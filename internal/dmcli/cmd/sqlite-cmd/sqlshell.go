@@ -5,12 +5,13 @@
 package sqlitecmd
 
 import (
-	"bayes-dmcli/internal/pkg/uuitable"
 	"database/sql"
 	"os"
 	"strings"
 	"sync/atomic"
 	"syscall"
+
+	"github.com/sszqdz/bayes-dmcli/internal/pkg/uuitable"
 
 	"github.com/c-bata/go-prompt"
 	"github.com/gosuri/uitable"

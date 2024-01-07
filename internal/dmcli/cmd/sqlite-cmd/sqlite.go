@@ -5,19 +5,19 @@
 package sqlitecmd
 
 import (
-	"bayes-dmcli/internal/dmcli/config"
-	"bayes-dmcli/internal/pkg/uuitable"
 	"database/sql"
 	"errors"
 	"os"
 	"strings"
 	"syscall"
 
+	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
+	"github.com/sszqdz/bayes-dmcli/internal/pkg/uuitable"
+
 	"github.com/c-bata/go-prompt"
+	_ "github.com/glebarez/go-sqlite"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-
-	_ "github.com/glebarez/go-sqlite"
 )
 
 var (

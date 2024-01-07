@@ -5,8 +5,8 @@
 package cmd
 
 import (
-	sqlitecmd "bayes-dmcli/internal/dmcli/cmd/sqlite-cmd"
-	"bayes-dmcli/internal/dmcli/config"
+	sqlitecmd "github.com/sszqdz/bayes-dmcli/internal/dmcli/cmd/sqlite-cmd"
+	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
 
 	"github.com/spf13/cobra"
 )

@@ -5,11 +5,11 @@
 package main
 
 import (
-	"bayes-dmcli/internal/dmcli/cmd"
-	"bayes-dmcli/internal/dmcli/config"
-
 	"os"
 	"path/filepath"
+
+	"github.com/sszqdz/bayes-dmcli/internal/dmcli/cmd"
+	"github.com/sszqdz/bayes-dmcli/internal/dmcli/config"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
