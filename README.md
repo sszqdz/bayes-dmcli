@@ -14,10 +14,15 @@
 
 ## 💻 Installation
 
-For Golang users, just:
+For Golang users:
+
+> **NOTICE❗**  
+> Due to the `replace` directive in the `go.mod`, `go install` may result in an error. Please follow the instructions below for installation.
 
 ```shell
-go install github.com/sszqdz/bayes-dmcli@latest
+git clone --depth=1 https://github.com/sszqdz/bayes-dmcli.git
+cd ./bayes-dmcli
+go install ./cmd/dmcli
 ```
 
 For other users, please choose the appropriate binary file:  
